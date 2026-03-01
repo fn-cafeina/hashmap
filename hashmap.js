@@ -3,4 +3,15 @@ export default class HashMap {
     this.capacity = 16;
     this.loadFactor = 0.75;
   }
+
+  hash(key) {
+    let hashCode = 0;
+
+    const primeNumber = 32;
+    for (let i = 0; i < key.length; i++) {
+      hashCode = (primeNumber * hashCode + key.charCodeAt(i)) % this.capacity;
+    }
+
+    return hashCode;
+  }
 }
