@@ -1,7 +1,14 @@
+import LinkedList from "./linked-list.js";
+
 export default class HashMap {
   constructor() {
     this.capacity = 16;
     this.loadFactor = 0.75;
+
+    this.buckets = Array.from(
+      { length: this.capacity },
+      () => new LinkedList(),
+    );
   }
 
   hash(key) {
