@@ -18,9 +18,8 @@ export default class LinkedList {
       return;
     }
 
-      const pointer = this.head;
-      while (pointer.nextNode) pointer = pointer.nextNode;
-      pointer.nextNode = node;
-    }
+    let pointer = this.head;
+    while (pointer.nextNode) pointer = pointer.nextNode;
+    pointer.nextNode = node;
   }
 }
