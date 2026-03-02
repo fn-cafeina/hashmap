@@ -22,4 +22,21 @@ export default class LinkedList {
     while (pointer.nextNode) pointer = pointer.nextNode;
     pointer.nextNode = node;
   }
+
+  removeAt(index) {
+    if (index === 0) {
+      this.head = this.head.nextNode;
+      return;
+    }
+
+    let current = this.head;
+    let previous = null;
+
+    while (index--) {
+      previous = current;
+      current = current.nextNode;
+    }
+
+    previous.nextNode = current.nextNode;
+  }
 }
