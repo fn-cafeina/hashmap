@@ -15,7 +15,9 @@ export default class LinkedList {
 
     if (!this.head) {
       this.head = node;
-    } else {
+      return;
+    }
+
       const pointer = this.head;
       while (pointer.nextNode) pointer = pointer.nextNode;
       pointer.nextNode = node;
