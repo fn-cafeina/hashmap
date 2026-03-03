@@ -89,4 +89,19 @@ export default class HashMap {
 
     return keys_;
   }
+
+  values() {
+    const buckets = this.buckets;
+    const values_ = [];
+
+    for (let i = 0; i < buckets.length; i++) {
+      if (buckets[i].length) {
+        for (let j = 0; j < buckets[i].length; j++) {
+          values_.push(buckets[i][j].value);
+        }
+      }
+    }
+
+    return values_;
+  }
 }
