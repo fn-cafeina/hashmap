@@ -26,9 +26,9 @@ export default class HashMap {
       return;
     }
 
-    const index = bucket.findIndex((element) => element.key === key);
-    if (index > -1) {
-      bucket[index].value = value;
+    const idx = bucket.findIndex((i) => i.key === key);
+    if (idx > -1) {
+      bucket[idx].value = value;
     } else {
       bucket.push({ key, value });
     }
@@ -38,8 +38,8 @@ export default class HashMap {
     const hashedKey = this.hash(key);
     const bucket = this.buckets[hashedKey];
 
-    const index = bucket.findIndex((element) => element.key === key);
-    if (index > -1) return bucket[index].value;
+    const idx = bucket.findIndex((i) => i.key === key);
+    if (idx > -1) return bucket[idx].value;
 
     return null;
   }
@@ -48,8 +48,8 @@ export default class HashMap {
     const hashedKey = this.hash(key);
     const bucket = this.buckets[hashedKey];
 
-    const index = bucket.findIndex((element) => element.key === key);
-    if (index > -1) return true;
+    const idx = bucket.findIndex((i) => i.key === key);
+    if (idx > -1) return true;
 
     return false;
   }
