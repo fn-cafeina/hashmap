@@ -26,23 +26,20 @@ export default class HashMap {
       return;
     }
 
-    for (let i = 0; i < bucket.length; i++) {
-      if (bucket[i].key === key) {
-        bucket[i].value = value;
-        return;
-      }
+    const index = bucket.findIndex((element) => element.key === key);
+    if (index > -1) {
+      bucket[index].value = value;
+    } else {
+      bucket.push({ key, value });
     }
-
-    bucket.push({ key, value });
   }
 
   get(key) {
     const hashedKey = this.hash(key);
     const bucket = this.buckets[hashedKey];
 
-    for (let i = 0; i < bucket.length; i++) {
-      if (bucket[i].key === key) return bucket[i].value;
-    }
+    const index = bucket.findIndex((element) => element.key === key);
+    if (index > -1) return bucket[index].value;
 
     return null;
   }
@@ -51,9 +48,8 @@ export default class HashMap {
     const hashedKey = this.hash(key);
     const bucket = this.buckets[hashedKey];
 
-    for (let i = 0; i < bucket.length; i++) {
-      if (bucket[i].key === key) return true;
-    }
+    const index = bucket.findIndex((element) => element.key === key);
+    if (index > -1) return true;
 
     return false;
   }
