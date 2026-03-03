@@ -46,4 +46,15 @@ export default class HashMap {
 
     return null;
   }
+
+  has(key) {
+    const hashedKey = this.hash(key);
+    const bucket = this.buckets[hashedKey];
+
+    for (let i = 0; i < bucket.length; i++) {
+      if (bucket[i].key === key) return true;
+    }
+
+    return false;
+  }
 }
