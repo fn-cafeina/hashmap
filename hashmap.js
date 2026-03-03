@@ -32,6 +32,16 @@ export default class HashMap {
     } else {
       bucket.push({ key, value });
     }
+
+    if (this.length() > this.capacity * this.loadFactor) {
+      const entries = this.entries();
+      this.capacity = this.capacity * 2;
+      this.buckets = Array.from({ length: this.capacity }, () => []);
+
+      for (let i = 0; i < entries.length; i++) {
+        this.set(entries[i][0], entries[i][1]);
+      }
+    }
   }
 
   get(key) {
