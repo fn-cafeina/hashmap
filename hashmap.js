@@ -74,4 +74,19 @@ export default class HashMap {
   clear() {
     this.buckets = Array.from({ length: this.capacity }, () => []);
   }
+
+  keys() {
+    const buckets = this.buckets;
+    const keys_ = [];
+
+    for (let i = 0; i < buckets.length; i++) {
+      if (buckets[i].length) {
+        for (let j = 0; j < buckets[i].length; j++) {
+          keys_.push(buckets[i][j].key);
+        }
+      }
+    }
+
+    return keys_;
+  }
 }
