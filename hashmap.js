@@ -66,4 +66,8 @@ export default class HashMap {
 
     return false;
   }
+
+  length() {
+    return this.buckets.reduce((curr, acc) => curr + acc.length, 0);
+  }
 }
