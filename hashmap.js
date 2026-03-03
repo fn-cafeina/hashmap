@@ -70,4 +70,8 @@ export default class HashMap {
   length() {
     return this.buckets.reduce((curr, acc) => curr + acc.length, 0);
   }
+
+  clear() {
+    this.buckets = Array.from({ length: this.capacity }, () => []);
+  }
 }
