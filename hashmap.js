@@ -21,8 +21,6 @@ export default class HashMap {
     const hashedKey = this.hash(key);
     const bucket = this.buckets[hashedKey];
 
-    console.log(this.buckets.length);
-
     if (!bucket.length) {
       bucket.push({ key, value });
       return;
@@ -36,5 +34,16 @@ export default class HashMap {
     }
 
     bucket.push({ key, value });
+  }
+
+  get(key) {
+    const hashedKey = this.hash(key);
+    const bucket = this.buckets[hashedKey];
+
+    for (let i = 0; i < bucket.length; i++) {
+      if (bucket[i].key === key) return bucket[i].value;
+    }
+
+    return null;
   }
 }
