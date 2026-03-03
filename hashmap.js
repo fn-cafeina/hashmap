@@ -53,4 +53,17 @@ export default class HashMap {
 
     return false;
   }
+
+  remove(key) {
+    const hashedKey = this.hash(key);
+    const bucket = this.buckets[hashedKey];
+
+    const idx = bucket.findIndex((i) => i.key === key);
+    if (bucket[idx]) {
+      bucket.splice(idx, 1);
+      return true;
+    }
+
+    return false;
+  }
 }
