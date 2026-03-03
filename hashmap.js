@@ -1,14 +1,9 @@
-import LinkedList from "./linked-list.js";
-
 export default class HashMap {
   constructor() {
     this.capacity = 16;
     this.loadFactor = 0.75;
 
-    this.buckets = Array.from(
-      { length: this.capacity },
-      () => new LinkedList(),
-    );
+    this.buckets = Array.from({ length: this.capacity }, () => []);
   }
 
   hash(key) {
@@ -26,15 +21,20 @@ export default class HashMap {
     const hashedKey = this.hash(key);
     const bucket = this.buckets[hashedKey];
 
-    bucket.append({ key, value });
+    console.log(this.buckets.length);
 
-    let current = bucket.head;
-    let index = 0;
-    while (current.nextNode) {
-      if (current.value.key === key) bucket.removeAt(index);
-
-      current = current.nextNode;
-      index++;
+    if (!bucket.length) {
+      bucket.push({ key, value });
+      return;
     }
+
+    for (let i = 0; i < bucket.length; i++) {
+      if (bucket[i].key === key) {
+        bucket[i].value = value;
+        return;
+      }
+    }
+
+    bucket.push({ key, value });
   }
 }
