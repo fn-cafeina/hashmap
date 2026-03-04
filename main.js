@@ -1,33 +1,64 @@
 import HashMap from "./hashmap.js";
+import HashSet from "./hashset.js";
 
-const test = new HashMap();
+const hMap = new HashMap();
 
-test.set("apple", "red");
-test.set("banana", "yellow");
-test.set("carrot", "orange");
-test.set("dog", "brown");
-test.set("elephant", "gray");
-test.set("frog", "green");
-test.set("grape", "purple");
-test.set("hat", "black");
-test.set("ice cream", "white");
-test.set("jacket", "blue");
-test.set("kite", "pink");
-test.set("lion", "golden");
+hMap.set("apple", "red");
+hMap.set("banana", "yellow");
+hMap.set("carrot", "orange");
+hMap.set("dog", "brown");
+hMap.set("elephant", "gray");
+hMap.set("frog", "green");
+hMap.set("grape", "purple");
+hMap.set("hat", "black");
+hMap.set("ice cream", "white");
+hMap.set("jacket", "blue");
+hMap.set("kite", "pink");
+hMap.set("lion", "golden");
 
-console.log(test.buckets);
+console.log(hMap.buckets);
 
-test.set("moon", "silver");
+hMap.set("moon", "silver");
 
-console.log(test.buckets);
+console.log(hMap.buckets);
 
-console.log(test.get("banana"));
-console.log(test.has("apple"));
-console.log(test.remove("frog"));
-console.log(test.length());
-console.log(test.keys());
-console.log(test.values());
-console.log(test.entries());
-test.clear();
+console.log(hMap.get("banana"));
+console.log(hMap.has("apple"));
+console.log(hMap.remove("frog"));
+console.log(hMap.length());
+console.log(hMap.keys());
+console.log(hMap.values());
+console.log(hMap.entries());
+hMap.clear();
 
-console.log(test.buckets);
+console.log(hMap.buckets);
+
+const hSet = new HashSet();
+
+hSet.set("apple");
+hSet.set("banana");
+hSet.set("carrot");
+hSet.set("dog");
+hSet.set("elephant");
+hSet.set("frog");
+hSet.set("grape");
+hSet.set("hat");
+hSet.set("ice cream");
+hSet.set("jacket");
+hSet.set("kite");
+hSet.set("lion");
+
+console.log(hSet.buckets);
+
+hSet.set("moon");
+
+console.log(hSet.buckets);
+
+console.log(hSet.get("banana"));
+console.log(hSet.has("apple"));
+console.log(hSet.remove("frog"));
+console.log(hSet.length());
+console.log(hSet.keys());
+hSet.clear();
+
+console.log(hSet.buckets);
